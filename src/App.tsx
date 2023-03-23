@@ -4,8 +4,7 @@ import ListItem from "./components/ListItem";
 import { usePlaylist } from "./hooks/usePlaylist";
 import { playlistIds } from "./data/playlists";
 import { GrChapterNext, GrChapterPrevious } from "react-icons/gr";
-import logo from "./assets/logo_listofonik_blue.png";
-import icon from "./assets/icon_listofonik_purple.png";
+import logo from "./assets/logo_listofonik_waves.png";
 import "./styles/index.scss";
 
 export default function App() {
@@ -37,7 +36,6 @@ export default function App() {
       <div className="main-wrapper">
         <div className="logo-wrapper">
           <img className={"logo"} src={logo} alt={"logo"} />
-          <img className={"icon"} src={icon} alt={"icon"} />
 
         </div>
         <div className="video-wrapper">
