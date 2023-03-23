@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import VideoPlayer from "./components/VideoPlayer";
 import ListItem from "./components/ListItem";
 import { usePlaylist } from "./hooks/usePlaylist";
-import { playlistIds } from "./data/playlists";
 import { GrChapterNext, GrChapterPrevious } from "react-icons/gr";
 import logo from "./assets/logo_listofonik_waves.png";
 import "./styles/index.scss";
+import { playlistIds } from "./config/apiConfig";
 
 export default function App() {
   const [currentVideo, setCurrentVideo] = useState(0);

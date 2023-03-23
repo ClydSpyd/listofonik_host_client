@@ -22,7 +22,7 @@ body {
   padding: 20px 0 40px 0;
 }
 
-.logo-wrapper{
+.logo-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,13 +31,13 @@ body {
   img.logo {
     width: 260px;
   }
-  
+
   @media (max-width: 760px) {
     img.logo {
       width: 200px;
     }
   }
-  
+
 }
 
 .video-wrapper {
@@ -52,25 +52,24 @@ body {
 
     * {
       height: 30px;
-      fill: $main_purple;
       stroke: $main_purple;
     }
 
     @media (max-width: 760px) {
       position: absolute;
       z-index: 10;
-
+      
       * {
         fill: $main_teal;
         stroke: $main_teal;
       }
 
-      &:first-of-type{
-        left: 5px;
+      &:first-of-type {
+        left: 0px;
       }
 
-      &:last-of-type{
-        right: 5px;
+      &:last-of-type {
+        right: 0px;
       }
     }
   }
@@ -80,6 +79,8 @@ body {
   width: 640px;
   height: 390px;
   position: relative;
+  border: 2px solid $purple40;
+  margin: 2px 0;
 
   @media (max-width: 760px) {
     width: 350px;
@@ -93,11 +94,11 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   margin-top: 15px;
-  border: 1px solid $purple60;
+  border: 2px solid $purple40;
   border-right-width: 0;
 
   &::-webkit-scrollbar {
-    width: 7px;
+    width: 5px;
   }
 
   &::-webkit-scrollbar-track {
@@ -105,8 +106,8 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $main_teal;
-    outline: 1px solid $main_teal;
+    background-color: #46464691;
+    outline: 1px solid #46464691;
     border-radius: 2px;
     ;
   }
@@ -128,7 +129,7 @@ body {
     transition: .3s ease-in-out all;
 
     &:hover {
-      border: 2px solid $main_teal;
+      border: 2px solid $main_purple;
     }
 
     img {
@@ -146,15 +147,17 @@ body {
 
       p {
         font-weight: 500;
-        color: $main_teal;
+        font-size: 14px;
+        color: #00000091;
       }
     }
 
     &.playing {
-      border-color: $main_purple;
+      background-color: $main_teal;
+      pointer-events: none;
 
       p {
-        color: $main_purple;
+        color: white;
       }
     }
   }
