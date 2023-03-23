@@ -1,22 +1,20 @@
-import "./styles/index.scss";
 import { useState, useEffect } from "react";
-import logo from "./assets/logo_listofonik_blue.png";
-import { GrChapterNext, GrChapterPrevious } from "react-icons/gr";
+import VideoPlayer from "./components/VideoPlayer";
 import ListItem from "./components/ListItem";
 import { usePlaylist } from "./hooks/usePlaylist";
-import VideoPlayer from "./components/VideoPlayer";
-
-const playlistId = "PL4njG2umBZ_ig2JqeJhiz5R5fDhMLNOTz";
+import { playlistIds } from "./data/playlists";
+import { GrChapterNext, GrChapterPrevious } from "react-icons/gr";
+import logo from "./assets/logo_listofonik_blue.png";
+import "./styles/index.scss";
 
 export default function App() {
   const [currentVideo, setCurrentVideo] = useState(0);
   const [playlist, setPlaylist] = useState<PlaylistItem[]>([]);
-  const hookRes = usePlaylist(playlistId);
+  const playlistResponse = usePlaylist(playlistIds[1]);
 
   useEffect(() => {
-    console.log(hookRes);
-    hookRes && setPlaylist(hookRes!);
-  }, [hookRes]);
+    playlistResponse && setPlaylist(playlistResponse!);
+  }, [playlistResponse]);
 
   const handleNext = () => {
     setCurrentVideo((prev) => (prev + 1) % playlist.length);
@@ -33,28 +31,29 @@ export default function App() {
     setCurrentVideo(newIdx);
   };
 
-  return (
-    <div className="main-wrapper">
-      <img className={"logo"} src={logo} alt={"logo"} />
-      <div className="video-wrapper">
-        <GrChapterPrevious onClick={handlePrev} />
-        <VideoPlayer
-          handleNext={handleNext}
-          playlist={playlist}
-          currentVideo={currentVideo}
-        />
-        <GrChapterNext onClick={handleNext} />
-      </div>
-      <div className="list-wrapper">
-        {playlist.length &&
-          playlist.map((item: PlaylistItem) => (
+   return (
+    !!playlist.length ? 
+      <div className="main-wrapper">
+        <img className={"logo"} src={logo} alt={"logo"} />
+        <div className="video-wrapper">
+          <GrChapterPrevious onClick={handlePrev} />
+          <VideoPlayer
+            handleNext={handleNext}
+            playlist={playlist}
+            currentVideo={currentVideo}
+          />
+          <GrChapterNext onClick={handleNext} />
+        </div>
+        <div className="list-wrapper">
+          {playlist.map((item: PlaylistItem) => (
             <ListItem
               item={item}
               isPlaying={playlist[currentVideo].videoId === item.videoId}
               selectVideo={handleSelectVideo}
             />
           ))}
+        </div>
       </div>
-    </div>
-  );
+      : <></>
+    )
 }
