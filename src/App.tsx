@@ -50,6 +50,7 @@ export default function App() {
         <div className="list-wrapper">
           {playlist.map((item: PlaylistItem) => (
             <ListItem
+              key={item.videoId}
               item={item}
               isPlaying={playlist[currentVideo].videoId === item.videoId}
               selectVideo={handleSelectVideo}

@@ -1,11 +1,16 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { parsePlaylistData } from "../utils/parsePlaylistData";
+import { stringifyParams } from "../utils/stringifyParams";
+import { apiBaseUrl, playlistUrlParams } from "../config/apiConfig";
 
 export const usePlaylist = (playlistId: string) => {
   const [playlist, setPlaylist] = useState<PlaylistItem[]>();
-  const api_key = "AIzaSyBE2O3F4Yqz7H0xn6O-fMqaNkBwTHrR8EY";
-  const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${api_key}`;
+  
+  const url = `${apiBaseUrl}${stringifyParams({
+    ...playlistUrlParams,
+    playlistId,
+  })}`;
 
   useEffect(() => {
     const fetchPlaylist = async () => {

@@ -10,7 +10,7 @@ type Props = {
 
 const VideoPlayer = ({ handleNext, playlist, currentVideo }: Props) => {
 
-    const { height, width } = useWindowSize();
+    const { width } = useWindowSize();
     
     const playerOptions = {
       height: width! < 760 ? 250 : 390,
