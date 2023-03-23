@@ -1,3 +1,5 @@
 # LISTOFONIK - host client test
 
-Frontend client create and manage dyanmically evolving, collaborative playlists.
+Frontend client create to and manage dyanmically evolving, collaborative playlists.
+
+`Dave Clydesdale, 2023`
