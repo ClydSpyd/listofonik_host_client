@@ -22,9 +22,18 @@ body {
   padding: 20px 0 40px 0;
 }
 
-img.logo {
-  width: 200px;
+.logo-wrapper{
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
+
+  img.logo {
+    width: 200px;
+  }
+  
+  img.icon{
+    width: 45px;
+  }
 }
 
 .video-wrapper {
@@ -39,9 +48,38 @@ img.logo {
 
     * {
       height: 30px;
-      fill: $main_teal;
-      stroke: $main_teal;
+      fill: $main_purple;
+      stroke: $main_purple;
     }
+
+    @media (max-width: 760px) {
+      position: absolute;
+      z-index: 10;
+
+      * {
+        fill: $main_teal;
+        stroke: $main_teal;
+      }
+
+      &:first-of-type{
+        left: 5px;
+      }
+
+      &:last-of-type{
+        right: 5px;
+      }
+    }
+  }
+}
+
+.player-wrapper {
+  width: 640px;
+  height: 390px;
+  position: relative;
+
+  @media (max-width: 760px) {
+    width: 350px;
+    height: 250px;
   }
 }
 
@@ -51,20 +89,28 @@ img.logo {
   overflow-y: scroll;
   overflow-x: hidden;
   margin-top: 15px;
-  border: 1px solid $teal40;
+  border: 1px solid $purple60;
+  border-right-width: 0;
 
   &::-webkit-scrollbar {
     width: 7px;
   }
-   
+
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   }
-   
+
   &::-webkit-scrollbar-thumb {
     background-color: $main_teal;
     outline: 1px solid $main_teal;
-    border-radius: 2px;;
+    border-radius: 2px;
+    ;
+  }
+
+
+  @media (max-width: 760px) {
+    width: calc(100vw - 40px);
+    max-width: 500px;
   }
 
   .list-item {
@@ -72,13 +118,13 @@ img.logo {
     height: 60px;
     display: flex;
     align-items: center;
-    margin: 5px 0;
-    border: 3px solid transparent;
+    margin: 5px;
+    border: 2px solid transparent;
     cursor: pointer;
     transition: .3s ease-in-out all;
 
     &:hover {
-      border: 3px solid $main_teal;
+      border: 2px solid $main_teal;
     }
 
     img {
@@ -86,24 +132,25 @@ img.logo {
       height: 50px;
       object-fit: cover;
       margin: 10px;
-      border-radius: 5px;;
+      border-radius: 5px;
+      ;
     }
 
     .content {
       box-sizing: border-box;
       padding: 0 15px;
 
-      p{
+      p {
         font-weight: 500;
         color: $main_teal;
       }
     }
 
     &.playing {
-      background-color: $main_teal;
+      border-color: $main_purple;
 
-      p{
-        color: white;
+      p {
+        color: $main_purple;
       }
     }
   }

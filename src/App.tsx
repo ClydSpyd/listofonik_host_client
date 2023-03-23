@@ -5,6 +5,7 @@ import { usePlaylist } from "./hooks/usePlaylist";
 import { playlistIds } from "./data/playlists";
 import { GrChapterNext, GrChapterPrevious } from "react-icons/gr";
 import logo from "./assets/logo_listofonik_blue.png";
+import icon from "./assets/icon_listofonik_purple.png";
 import "./styles/index.scss";
 
 export default function App() {
@@ -34,7 +35,11 @@ export default function App() {
    return (
     !!playlist.length ? 
       <div className="main-wrapper">
-        <img className={"logo"} src={logo} alt={"logo"} />
+        <div className="logo-wrapper">
+          <img className={"logo"} src={logo} alt={"logo"} />
+          <img className={"icon"} src={icon} alt={"icon"} />
+
+        </div>
         <div className="video-wrapper">
           <GrChapterPrevious onClick={handlePrev} />
           <VideoPlayer

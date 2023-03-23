@@ -1,4 +1,5 @@
 import YouTube, { YouTubeEvent } from "react-youtube";
+import { useWindowSize } from "../hooks/useWindowSize";
 
 type Props = {
   handleNext: (event: YouTubeEvent<number>) => void;
@@ -6,21 +7,27 @@ type Props = {
   currentVideo: number;
 };
 
-const playerOptions = {
-  height: "390",
-  width: "640",
-  playerVars: {
-    autoplay: 1,
-  },
-};
 
 const VideoPlayer = ({ handleNext, playlist, currentVideo }: Props) => {
+
+    const { height, width } = useWindowSize();
+    
+    const playerOptions = {
+      height: width! < 760 ? 250 : 390,
+      width: width! < 760 ? 350 : 640,
+      playerVars: {
+        autoplay: 1,
+      },
+    };
+
   return (
-    <YouTube
-      onEnd={handleNext}
-      videoId={playlist.length ? playlist[currentVideo].videoId : ""}
-      opts={playerOptions}
-    />
+    <div className="player-wrapper">
+      <YouTube
+        onEnd={handleNext}
+        videoId={playlist.length ? playlist[currentVideo].videoId : ""}
+        opts={playerOptions}
+      />
+    </div>
   );
 };
 
